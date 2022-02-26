@@ -6859,16 +6859,8 @@ span.app-store-btn {
 	padding: 15px;
 }
 
-.col-md-4:nth-child(1) .user-stats {
-	background: #34495e;
-}
-
-.col-md-4:nth-child(2) .user-stats {
-	background: #3498db;
-}
-
-.col-md-4:nth-child(3) .user-stats {
-	background: #1abc9c;
+.user-stats {
+	background: #000000;
 }
 
 .user-stats> h2 {
@@ -9410,8 +9402,8 @@ footer.footer-bg {
 	background-color: #05cc47;
 }
 .footer-top .widget-newsletter .fieldset form input[type="text"] {
-	background-color: #f5f5f5;
-	border: medium none;
+    background-color: #ffffff;
+    border: 1px solid #194fa4;
 	color: #999;
 	font-size: 12px;
 	height: 48px;

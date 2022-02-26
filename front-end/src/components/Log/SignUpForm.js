@@ -3,7 +3,7 @@ import SignInForm from './SignInForm';
 import {Link} from "react-router-dom"
 
 function SignUpForm() {
-    const [formSubmit, setFormSubmit] = useState(true);
+    const [formSubmit, setFormSubmit] = useState(false);
     const [name, setName] = useState("");
     const [number, setNumber] = useState("");
     const [email, setEmail] = useState("");

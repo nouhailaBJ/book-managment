@@ -10,14 +10,16 @@ function LeftSide() {
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Curabitur et dolor eget erat fringilla port.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Curabitur et dolor eget erat fringilla port.
         </p>
         <h4>Download the app for free:</h4>
         <ul className="apps-donwloads">
             <li>
-            <img src="images/googleplay.png" alt="" />
+              <a href="#" ><img src="images/googleplay.png" alt="" /></a>
             </li>
             <li>
-            <img src="images/appstore.png" alt="" />
+               <a href="#" ><img src="images/appstore.png" alt="" /></a>
             </li>
         </ul>
         </div>
