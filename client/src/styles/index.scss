@@ -1,0 +1,102 @@
+body{
+    font-family: 'Nunito', sans-serif;
+}
+
+.header-top-flex
+{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+.nav-link:focus, .nav-link:hover {
+    color: #f9f9fa;
+}
+.dropdown_menu a.dropdown-item {
+    color: #2b2929!important;
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.dropdown_book a{
+    margin: 0;
+    padding: 0 13px;
+    width: 100%;
+    color: #232323!important;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 50px;
+    text-transform: uppercase;
+}
+.speciel-drop .dropdown-toggle{
+    color: #fff!important;
+}
+.dropdown_book .nav-link:focus,.dropdown_book .nav-link:hover {
+    color: #1a1a1b;
+}
+.dropdown-menu.show {
+    border-top: 3px solid #1850a4;
+}
+.toggle-menu{
+    background: #194fa4;
+    color: #fff;
+    outline: none;
+    margin-left: 2rem;
+    display: none;
+    float: right;
+}
+.toggle-menu i{
+    color: #fff;
+}
+
+.form-control{
+    height: 3.4rem;
+}
+.background-rotator .search-form .btn {
+    width: 100%;
+    height: 3.4rem;
+}
+.book-section{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.book{
+    margin-right: 2rem;
+}
+.socail-icons ul, .my-quicklinks ul{
+    padding-left: 0rem;
+}
+.about-us{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.connection-page{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+}
+.form-group{
+    margin-top: 1.4rem;
+}
+.error{
+    color: #d82148;
+}
+.success{
+    color: #1d955d;
+    text-align: center;
+}
+@media (max-width: 767px)
+{
+    .hidden-xs {
+        display: none !important;
+    }
+    .background-rotator .search-section{
+        padding: 20px 0;
+        border-top: 1px solid #eee;
+    }
+}

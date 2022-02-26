@@ -1,0 +1,13 @@
+.owl-carousel .owl-item img{
+    height: 39rem;
+    object-fit: cover;
+}
+.owl-theme .owl-nav{
+    display: none;
+}
+
+@media(max-width:768px){
+    .owl-theme.background-rotator-slider{
+        display: none;
+    }
+}
