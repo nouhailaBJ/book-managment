@@ -56,7 +56,7 @@ function NavHeader() {
 					)}
                     <ul className="menu-search-bar active">
                         <li>
-                            <a href="#" className="btn btn-theme"><i className="fa fa-plus" aria-hidden="true"></i> Add new Book</a>
+                            <Link to="/addNewBook" className="btn btn-theme"><i className="fa fa-plus" aria-hidden="true"></i> Add new Book</Link>
                         </li>
                     </ul>
                 </div>

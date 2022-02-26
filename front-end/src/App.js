@@ -7,6 +7,11 @@ import Faqs from "./pages/Faqs";
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound";
 import Connection from "./components/Log/index"
+import NewBook from "./pages/NewBook";
+import Books from "./pages/Books";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import ReviewBook from "./pages/ReviewBook";
 function App() {
   return (
     <div className="App">
@@ -18,6 +23,12 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/connection" element={<Connection />} />
+          <Route path="/addNewBook" element={<NewBook />} />
+          <Route path="/books" element={<Books />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/single" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/book/:BookId" element={<ReviewBook />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
