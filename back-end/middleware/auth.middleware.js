@@ -31,15 +31,13 @@ module.exports.requireAuth = (req, res, next) => {
     if (token) {
       jwt.verify(token, process.env.TOKEN_SECRET, async (err, decodedToken) => {
         if (err) {
-          console.log(err);
           res.send(200).json('no token')
         } else {
-          console.log(decodedToken.id);
           next();
         }
       });
     } else {
-      console.log('No token');
+      res.status(400).send("you dont have the permission")
     }
   };
   
