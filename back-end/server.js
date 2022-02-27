@@ -8,6 +8,8 @@ require('./config/db')
 const userRouter = require('./routes/user.routes')
 const contactRouter = require('./routes/contact.routes')
 const faqRouter = require('./routes/faq.routes')
+const { checkUser, requireAuth } = require('./middleware/auth.middleware')
+const cookieParser = require('cookie-parser')
 
 // config of express
 const express = require('express')
@@ -18,6 +20,15 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true    
 }))
+
+// let’s you use the cookieParser in our app
+app.use(cookieParser());
+
+// jwt : check all route with middleware user
+app.get('*', checkUser)
+app.get('/api/jwtid', requireAuth, (req, res) => {
+    res.status(200).send(res.locals.user._id)
+});
 
 app.use('/api/user', userRouter)
 app.use('/api/contact', contactRouter)
