@@ -6,9 +6,9 @@ function HeaderUser({editibale, userData }) {
   return (
     <div className="col-md-12 col-xs-12 col-sm-12">
       <section className="search-result-item">
-        <a className="image-link" href="#">
+        <div className="image-link">
           <img className="image center-block" alt="" src={userData.avatar} />
-        </a>
+        </div>
         <div className="search-result-item-body">
           <div className="row">
             <div className="col-md-5 col-sm-12 col-xs-12 text-center">
