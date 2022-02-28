@@ -59,7 +59,7 @@ module.exports.sendMessage = async (req, res) => {
             email: email,
             message: message
         })
-        res.status(201).json({message: msg})
+        res.status(201).json({message: "Success Send the message We will respond you soon"})
     }catch(err){
         console.log(err)
         res.status(402).json({err})
