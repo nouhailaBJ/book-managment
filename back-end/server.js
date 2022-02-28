@@ -10,6 +10,7 @@ const contactRouter = require('./routes/contact.routes')
 const faqRouter = require('./routes/faq.routes')
 const { checkUser, requireAuth } = require('./middleware/auth.middleware')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 
 // config of express
 const express = require('express')
@@ -23,6 +24,15 @@ app.use(express.urlencoded({
 
 // let’s you use the cookieParser in our app
 app.use(cookieParser());
+const corsOptions = {
+    origin: process.env.CLIENT_API_URL,
+    credentials: true,
+    'allowedHeaders': ['sessionId', 'Content-Type'],
+    'exposedHeaders': ['sessionId'],
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'preflightContinue': false
+}
+app.use(cors(corsOptions))
 
 // jwt : check all route with middleware user
 app.get('*', checkUser)

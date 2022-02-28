@@ -1,7 +1,7 @@
 import React from "react";
 import Title from "../Title";
 
-function Information() {
+function Information({userData}) {
   return (
     <div className="col-md-12 mt-5">
       <div className="profile-edit">
@@ -13,19 +13,19 @@ function Information() {
           <dt>
             <strong>Your name </strong>
           </dt>
-          <dd>John Doe</dd>
+          <dd>{userData.name}</dd>
           <dt>
             <strong>Email Address </strong>
           </dt>
-          <dd>contact@scriptsbundle.com</dd>
+          <dd>{userData.email}</dd>
           <dt>
             <strong>Phone Number </strong>
           </dt>
-          <dd>(0423) 12-2345-789</dd>
+          <dd>(212) {userData.number} </dd>
           <dt>
             <strong>Bio </strong>
           </dt>
-          <dd>England</dd>
+          <dd>{userData.bio ? userData.bio : '-----'}</dd>
         </dl>
       </div>
     </div>

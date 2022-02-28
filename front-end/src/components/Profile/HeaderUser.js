@@ -1,20 +1,21 @@
 import React from 'react'
 import {Link} from "react-router-dom"
+import { dateParser } from '../Utils'
 
-function HeaderUser({editibale}) {
+function HeaderUser({editibale, userData }) {
   return (
     <div className="col-md-12 col-xs-12 col-sm-12">
       <section className="search-result-item">
         <a className="image-link" href="#">
-          <img className="image center-block" alt="" src="/images/1.jpeg" />
+          <img className="image center-block" alt="" src={userData.avatar} />
         </a>
         <div className="search-result-item-body">
           <div className="row">
             <div className="col-md-5 col-sm-12 col-xs-12 text-center">
               <h4 className="search-result-item-heading">
-                <a href="#">Nouhaila Bjaghou</a>
+                <a href="#">{userData.name }</a>
               </h4>
-              <p>Join us at : 2020/08/25</p>
+              <p>Join us at : { dateParser(userData.createdAt) }</p>
               {!editibale ? (
                  <Link to="/settings" className="btn btn-theme">
                   Edit My Profile
@@ -29,19 +30,19 @@ function HeaderUser({editibale}) {
               <div className="row ad-history">
                 <div className="col-md-4 col-sm-4 col-xs-12">
                   <div className="user-stats">
-                    <h2>374</h2>
-                    <small>Book Added</small>
+                    <h2>0</h2>
+                    <small>Books</small>
                   </div>
                 </div>
                 <div className="col-md-4 col-sm-4 col-xs-12">
                   <div className="user-stats">
-                    <h2>980</h2>
-                    <small>Reviews Shared</small>
+                    <h2>0</h2>
+                    <small>Reviews</small>
                   </div>
                 </div>
                 <div className="col-md-4 col-sm-4 col-xs-12">
                   <div className="user-stats">
-                    <h2>980</h2>
+                    <h2>0</h2>
                     <small>Followers</small>
                   </div>
                 </div>

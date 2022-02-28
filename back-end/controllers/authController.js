@@ -15,7 +15,13 @@ exports.validate = (method) => {
       case 'createUser': {
        return [ 
           body('name', "Name doesn't exists").exists(),
-          body('email', 'Invalid email').exists().isEmail(),
+          body('email', 'Invalid email').exists().isEmail().custom(
+              async (email) => {
+                  const existEmail = await UserModel.findOne({email})
+                  if (existEmail)
+                    throw new Error('Email Already in use, Choose Another')
+              }
+          ),
           body('number', "Phone Number is Invalid").exists().isInt(),
           body('password', "Password is required").exists()
          ]   
@@ -32,7 +38,7 @@ exports.validate = (method) => {
 module.exports.createUser = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.status(422).json({ errors: errors.array() });
+      res.status(404).send({ errors: errors.array() });
       return;
     }
     const { name, number, email, password} = req.body
@@ -52,17 +58,19 @@ module.exports.createUser = async (req, res, next) => {
 module.exports.signIn = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.status(422).json({ errors: errors.array() });
+      res.status(404).send({ errors: errors.array() });
       return;
     }
     const {email, password} = req.body
     try{
         const user = await UserModel.login(email, password)
+        if (user.error) {
+            return res.status(404).send({err: user.error})
+        }
         const token = createToken(user._id)
         res.cookie('jwt', token, {httpOnly: true, maxAge})
         res.status(201).json({user: user._id})
     }catch(err) {
-        res.status(200).send(err)
         return next(err)
     }
 }

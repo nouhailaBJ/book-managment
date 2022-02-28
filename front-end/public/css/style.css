@@ -5818,7 +5818,7 @@ h2.no-span:before, h2.no-span:after {
 	background-clip: padding-box;
 	border: 0 none;
 	border-radius: 0;
-	color: #fff;
+	color: #fff!important;
 	margin-bottom: 10px;
 	padding: 19px 19px 19px 65px;
 	position: relative;
@@ -5828,9 +5828,9 @@ h2.no-span:before, h2.no-span:after {
 	content: "";
 	font-family: FontAwesome;
 	font-size: 1.6rem;
-	left: 23px;
+	right: 23px;
 	position: absolute;
-	top: 17px;
+	top: 9px;
 }
 
 .alert.alert-success {

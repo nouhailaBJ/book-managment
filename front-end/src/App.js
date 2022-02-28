@@ -1,37 +1,41 @@
-import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Faqs from "./pages/Faqs";
-import Home from "./pages/Home"
-import NotFound from "./pages/NotFound";
-import Connection from "./components/Log/index"
-import NewBook from "./pages/NewBook";
-import Books from "./pages/Books";
-import Profile from "./pages/Profile";
-import ReviewBook from "./pages/ReviewBook";
+import { UidContext } from './components/AppContext';
+import { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
+import axios from "axios"
+import { getUser} from "./actions/user.action"
+import RouterComp from "./routers/index"
+
 function App() {
+  const [uid, setuid] = useState(null)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      await axios({
+        method: "get",
+        url: `${process.env.REACT_APP_API_URL}/jwtid`,
+        withCredentials: true,
+      }).then((res) => {
+        setuid(res.data)
+      }).catch((err) => console.log("No Token"))
+    }
+    fetchToken()
+    // update the data in our store
+    if (uid)
+      dispatch(getUser(uid))
+  }, [uid])
   return (
+    <UidContext.Provider value={uid}>
     <div className="App">
       <Header />
       <div className="main-content-area clearfix">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/faqs" element={<Faqs />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/connection" element={<Connection />} />
-          <Route path="/addNewBook" element={<NewBook />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/profile" element={<Profile editibale={false} />} />
-          <Route path="/settings" element={<Profile editibale={true}  />} />
-          <Route path="/book/:BookId" element={<ReviewBook />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <RouterComp />
       </div>
       <Footer />
     </div>
+    </UidContext.Provider> 
   );
 }
 

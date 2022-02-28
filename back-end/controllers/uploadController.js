@@ -15,7 +15,7 @@ module.exports.uploadProfile = async (req, res) => {
     try{
         await UserModel.findByIdAndUpdate(
             req.body.userId,
-            { $set: {picture: "./uploads/profile/" + fileName } }
+            { $set: {avatar: "./uploads/profile/" + fileName } }
         )
         res.status(200).json({ msg: "Succesful updated" });
     }catch(err){
