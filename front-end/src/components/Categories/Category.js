@@ -1,15 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function Category() {
+function Category({city}) {
   return (
-    <div className="col-md-3 col-xs-12 col-sm-6">
-        <div className="category-grid-box-1">
-        <div className="short-description-1 text-center clearfix">
-            <a href="#" className="category-title">
-            <h3><i className="fa fa-home"></i></h3>
-            <h3>Car & Bikes</h3>
-            </a>
-        </div>
+    <div className="col-md-2 col-xs-12 col-sm-6">
+        <div className="category-grid-box-1 city">
+          <Link to={`/category/${city._id}`}><img src={city.image} /></Link>
+          <h3>{city.name }</h3>
         </div>
     </div>
   )

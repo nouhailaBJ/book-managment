@@ -1,32 +1,41 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
-const bookShema = new mongoose.Schema({
-    title: {
+const bookSchema = new mongoose.Schema({
+    number_people: {
+        type: Number,
+        required: true
+    },
+    full_name: {
         type: String,
         required: true
     },
-    description: {
+    date: {
         type: String,
         required: true
     },
-    owner: {
-        type: String
-    },
-    url_downoald: {
+    occassion: {
         type: String,
         required: true
     },
-    count_page: {
-        type: Number
+    special_request: {
+        type: String,
     },
-    reviews: {
+    time: {
+        type: String,
+        required: true
+    },
+    restaurant: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Review"
+        ref: 'Restaurant'
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     createdAt: {
         type: Date,
         default: Date.now
     }
-})
+}, {timestamps: true})
 
-module.exports = mongoose.model('book', bookShema)
+module.exports = mongoose.model('Booking', bookSchema)

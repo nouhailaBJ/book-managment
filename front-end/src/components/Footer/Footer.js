@@ -10,8 +10,8 @@ function Footer() {
         <div className="container">
           <div className="row">
           <LeftSide />
-          <CenterSide/>
-          <RightSide />
+          {/* <CenterSide/>
+          <RightSide /> */}
           </div>
         </div>
       </div>

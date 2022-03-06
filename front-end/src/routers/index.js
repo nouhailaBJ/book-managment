@@ -5,10 +5,10 @@ import Faqs from "../pages/Faqs";
 import Home from "../pages/Home"
 import NotFound from "../pages/NotFound";
 import Connection from "../components/Log/index"
-import NewBook from "../pages/NewBook";
-import Books from "../pages/Books";
+import NewRestaurant from "../pages/NewRestaurant";
+import Restaurants from "../pages/Restaurants";
 import Profile from "../pages/Profile";
-import ReviewBook from "../pages/ReviewBook";
+import Review from "../pages/Review";
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "../middleware/RequireAuth";
 
@@ -21,7 +21,7 @@ function index() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/connection" element={<Connection />} />
-        <Route path="/books" element={<Books />} />
+        <Route path="/restaurants" element={<Restaurants />} />
         <Route
           path="/profile"
           element={
@@ -31,8 +31,8 @@ function index() {
           }
         />
         <Route path="/settings" element={<RequireAuth><Profile editibale={true} /></RequireAuth>} />
-        <Route path="/addNewBook" element={<RequireAuth><NewBook /></RequireAuth>} />
-        <Route path="/book/:BookId" element={<ReviewBook />} />
+        <Route path="/addNewRestaurant" element={<RequireAuth><NewRestaurant /></RequireAuth>} />
+        <Route path="/restaurant/:id" element={<Review />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

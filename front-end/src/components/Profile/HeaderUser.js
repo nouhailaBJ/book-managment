@@ -31,7 +31,7 @@ function HeaderUser({editibale, userData }) {
                 <div className="col-md-4 col-sm-4 col-xs-12">
                   <div className="user-stats">
                     <h2>0</h2>
-                    <small>Books</small>
+                    <small>Restaurant</small>
                   </div>
                 </div>
                 <div className="col-md-4 col-sm-4 col-xs-12">

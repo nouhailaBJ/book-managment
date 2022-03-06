@@ -1,21 +1,18 @@
-import React from 'react'
-import Category from './Category'
+import React, { useEffect, useState } from 'react'
+import Title from '../Title'
+import Category from "./Category"
 
-function Categories() {
+function Categories({cities}) {
   return (
     <section className="custom-padding gray">
     <div className="container">
       <div className="row">
-        <div className="row grid-style-2">
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-          <Category />
-        </div>
+        <Title title="Explore By City" desc="" />
+          <div className="row grid-style-2">
+          {cities.map((city, index) =>
+            <Category city={city} key={index}/>
+          )}
+          </div>
       </div>
     </div>
   </section>

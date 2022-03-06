@@ -4,9 +4,9 @@ const faqModel = require('../models/faq.model')
 module.exports.getAll = async (req, res) => {
     try {
         const faqs = await faqModel.find({})
-        res.status(200).json({faqs: faqs})
+        res.status(200).json(faqs)
     }catch(err){
-        req.status(400).json({err})
+        res.status(400).json({err})
     }
 }
 
@@ -37,6 +37,6 @@ module.exports.createFaqs = async (req, res) => {
         })
         res.status(200).json({faq: faq})
     }catch(err) {
-        req.status(400).json({err})
+        res.status(400).json({err})
     }
 }

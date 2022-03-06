@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Container, NavDropdown, NavLink, Row } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 function NavHeader() {
 	const [toggleMenu, setToggleMenu] = useState(false)
 	const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    const cities = useSelector(state => state.cityReducer)
 	const toggleNav = () => {
 		setToggleMenu(!toggleMenu)
 	  }
@@ -39,11 +41,11 @@ function NavHeader() {
                             <NavDropdown
                             id="nav-dropdown-dark-example"
                             className="dropdown_menu"
-                            title={"Shop By Category"}
+                            title={"By City"}
                             >
-                            <Link to="/about">Book cat</Link>
-                            <NavDropdown.Divider />
-                            <Link to="/about">Book cat</Link>
+                            {
+                                cities.map((city, index) => <Link to="/about" key={index}>{city.name}</Link>)
+                            }
                             </NavDropdown>
                         </li>
                         <li>
@@ -56,7 +58,7 @@ function NavHeader() {
 					)}
                     <ul className="menu-search-bar active">
                         <li>
-                            <Link to="/addNewBook" className="btn btn-theme"><i className="fa fa-plus" aria-hidden="true"></i> Add new Book</Link>
+                            <Link to="/addNewRestaurant" className="btn btn-theme"><i className="fa fa-plus" aria-hidden="true"></i> Add new Restaurant</Link>
                         </li>
                     </ul>
                 </div>

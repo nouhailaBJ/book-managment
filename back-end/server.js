@@ -8,6 +8,8 @@ require('./config/db')
 const userRouter = require('./routes/user.routes')
 const contactRouter = require('./routes/contact.routes')
 const faqRouter = require('./routes/faq.routes')
+const restaurantRouter = require('./routes/restaurant.routes')
+const cityRouter = require('./routes/cities.routes')
 const { checkUser, requireAuth } = require('./middleware/auth.middleware')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
@@ -43,6 +45,8 @@ app.get('/api/jwtid', requireAuth, (req, res) => {
 app.use('/api/user', userRouter)
 app.use('/api/contact', contactRouter)
 app.use('/api/faqs', faqRouter)
+app.use('/api/restaurants', restaurantRouter)
+app.use('/api/city', cityRouter)
 
 // listining in the port
 app.listen(process.env.PORT || 5000, () => {

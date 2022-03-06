@@ -1,11 +1,9 @@
 .featured-slider-single img{
-    height: 240px;
-    width: 200px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
-.featured-slider-single{
-    display: flex;
-    align-items: center;
-}
+
 .comment-info .author-title{
     display: flex;
     justify-content: space-between;
@@ -39,4 +37,7 @@
     width: 60px;
     border-radius: 50%;
     text-align: center;
+}
+.short-history ul{
+    padding-left: 0;
 }

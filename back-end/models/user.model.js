@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        default: "./uploads/profile/user.png"
+        default: "/uploads/profile/user.png"
     },
     bio: {
         type: String,
@@ -35,10 +35,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    books: {
+    restaurants: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Book"
-    },
+        ref: 'Restaurant'
+    }],
     createdAt: {
         type: Date,
         default: Date.now

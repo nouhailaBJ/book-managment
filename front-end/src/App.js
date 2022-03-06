@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import axios from "axios"
 import { getUser} from "./actions/user.action"
 import RouterComp from "./routers/index"
+import { GetFaqs } from "./actions/faqs.actions";
+import { GetCities } from "./actions/cities.actions";
 
 function App() {
   const [uid, setuid] = useState(null)
@@ -22,6 +24,8 @@ function App() {
       }).catch((err) => console.log("No Token"))
     }
     fetchToken()
+    dispatch(GetFaqs())
+    dispatch(GetCities())
     // update the data in our store
     if (uid)
       dispatch(getUser(uid))

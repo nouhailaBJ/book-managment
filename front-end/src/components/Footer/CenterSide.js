@@ -6,7 +6,7 @@ function CenterSide() {
     <>
       <div className="col-md-2 col-sm-6 col-xs-12">
         <div className="widget my-quicklinks">
-          <h5>Quick Links</h5>
+          <h5>Popular Pages</h5>
           <ul>
             <li>
               <Link to="/about">About Us</Link>
@@ -23,28 +23,24 @@ function CenterSide() {
           <h5>Follow Us</h5>
           <ul>
             <li>
-              <a className="Facebook">
+              <a className="">
                 <i className="fa fa-facebook"></i>
               </a>
-              {/* <span>Facebook</span> */}
             </li>
             <li>
-              <a className="Twitter" href="">
+              <a className="" href="">
                 <i className="fa fa-twitter"></i>
               </a>
-              {/* <span>Twitter</span> */}
             </li>
             <li>
-              <a className="Linkedin" href="">
+              <a className="" href="">
                 <i className="fa fa-linkedin"></i>
               </a>
-              {/* <span>Linkedin</span> */}
             </li>
             <li>
-              <a className="Google" href="">
+              <a className="" href="">
                 <i className="fa fa-google-plus"></i>
               </a>
-              {/* <span>Google+</span> */}
             </li>
           </ul>
         </div>

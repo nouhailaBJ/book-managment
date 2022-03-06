@@ -2,7 +2,7 @@ body{
     font-family: 'Nunito', sans-serif;
 }
 a {
-    color: #d82148;
+    color: #cd1b1b;
 }
 .header-top-flex
 {
@@ -39,7 +39,7 @@ a {
     color: #1a1a1b;
 }
 .dropdown-menu.show {
-    border-top: 3px solid #1850a4;
+    border-top: 3px solid #85301b;
 }
 .toggle-menu{
     background: #194fa4;
@@ -86,7 +86,7 @@ a {
     margin-top: 1.4rem;
 }
 .error{
-    color: #d82148;
+    color: #cd1b1b;
 }
 .success{
     color: #1d955d;
@@ -113,4 +113,8 @@ a {
         padding: 20px 0;
         border-top: 1px solid #eee;
     }
+}
+
+.accordion-item{
+    margin-bottom: 0.6rem;
 }
