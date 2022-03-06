@@ -1420,7 +1420,7 @@ img.resize {
 }
 .category-grid-box-1 img{
 	width: 100%;
-    object-fit: contain;
+    object-fit: cover;
 	
 }
 .city img{
