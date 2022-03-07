@@ -10,10 +10,6 @@ export const createRestaurant = (restaurant) => {
     return async (dispatch) => {
         try{
             const res = await axios.post(`${process.env.REACT_APP_API_URL}/restaurants/create`, restaurant)
-            // const image = await axios.post(`${process.env.REACT_APP_API_URL}/restaurants/upload`, {
-            //     restaurantId: res.data._id,
-            //     image: data.image
-            // })
             dispatch({type: CREATE_RESTAURANT, payload: res.data})
             toast.success("Nice you added a new Restaurant Thank you for sharing");
         }catch(err) {

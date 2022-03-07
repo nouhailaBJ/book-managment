@@ -13,13 +13,15 @@ function NewRestaurant() {
   const [restaurant, setRestaurant] = useState({user});
   const dispatch = useDispatch()
   const handleInput = (e) => {
-   
     const { name, value } = e.target;
     setRestaurant({ ...restaurant, [name]: value });
   };
   const HandleSubmit = (e) => {
    e.preventDefault()
-   dispatch(createRestaurant(restaurant))
+   const data = new FormData()
+   data.append("image", file)
+   //add the data here
+   dispatch(createRestaurant(data))
 }
   return (
     <section className="section-padding gray ">
@@ -32,7 +34,7 @@ function NewRestaurant() {
           <div className="submit-form">
             <div className="row">
               <div className="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-                <label className="control-label">Restaurant Title</label>
+              s  <label className="control-label">Restaurant Title</label>
                 <input
                   className="form-control"
                   placeholder="Title"
@@ -44,11 +46,10 @@ function NewRestaurant() {
             </div>
             <div className="row">
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-                <label className="control-label">Select City </label>
+                <label className="control-label">Select City</label>
                 <select className=" form-control make" onChange={handleInput} name="city">
                   <option label="Any City !"></option>
                   {cities.map((city, index) => <option key={index} value={city._id}>{city.name}</option>)}
-                  
                 </select>
               </div>
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">

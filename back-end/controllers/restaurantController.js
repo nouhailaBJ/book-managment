@@ -31,17 +31,25 @@ module.exports.index = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
-
 module.exports.create = async (req, res) => {
     if (!ObjectId.isValid(req.body.user._id))
         return res.status(400).send({ msg: "Unknown ID" });
     const errors = validationResult(req)
+    try{
+        if(req.file.mimetype !== "image/jpg" &&
+        req.file.mimetype !== "image/png" &&
+        req.file.mimetype !== "image/jpeg")
+        errors.push("Invalid format of the image")
+    }catch(err){
+        return res.status(404).json({err})
+    }
     if (!errors.isEmpty()){
         res.status(400).json({errors: errors.array() })
         return ;
     }
+    const image = req.file != null ? req.file.filename : null
     try{
-        const restaurant = await RestaurantModel.create(req.body)
+        const restaurant = await RestaurantModel.create({...req.body, image})
         const user = await UserModel.findById({_id: restaurant.user})
         user.restaurants.push(restaurant);
         await user.save();

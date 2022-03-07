@@ -8,12 +8,12 @@ export default function restaurantReducer(state = initialState, action)
         case GET_RETAURANTS:
             return action.payload
         case CREATE_RESTAURANT:
-            return [...state, payload]
+            return [...state, action.payload]
         case UPDATE_RESTAURANT:
             return state.map((restaurant) => {
-                if (restaurant.id == payload.id){
+                if (restaurant.id == action.payload.id){
                     return {
-                        ...restaurant, ...payload
+                        ...restaurant, ...action.payload
                     }
                 }
                 else{
@@ -21,7 +21,7 @@ export default function restaurantReducer(state = initialState, action)
                 }
             })
         case DELETE_RESTAURANT:
-            return state.filter(({id}) => id != payload.id)
+            return state.filter(({id}) => id != action.payload.id)
 
         default:
             return state

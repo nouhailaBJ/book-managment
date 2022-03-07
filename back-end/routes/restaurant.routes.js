@@ -10,7 +10,7 @@ const uploadPath = "../front-end/public/uploads/restaurant"
 var storage = multer.diskStorage({
     destination: uploadPath,
     filename: (req, file, cb) => {
-        cb(null, file.originalname)
+        cb(null, Math.random() + "-" + file.originalname)
     },
     fileFilter: (req, file, callback) => {
         callback(null, imageMimeTypes.includes(file.mimetype))
@@ -20,7 +20,7 @@ const upload = multer({storage: storage})
 
 router.get('/', restaurantController.index)
 
-router.post('/create',restaurantController.validate('create'), restaurantController.create)
+router.post('/create', [ upload.single('image'), restaurantController.validate('create')], restaurantController.create)
 
 router.post('/upload', upload.single('image'),  uploadController.uploadImageRestaurant)
 
