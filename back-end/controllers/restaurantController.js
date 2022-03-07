@@ -9,6 +9,15 @@ exports.validate = (method) => {
             return [
                 body('title', "title doesn't exists").exists(),
                 body('desc', "desc doesn't exists").exists(),
+                body('location', "location doesn't exists").exists(),
+                body('date_works', "date_works doesn't exists").exists(),
+                body('price_range', "price range doesn't exists").exists(),
+                body('special_plats', "special plats doesn't exists").exists(),
+                body('type', "type doesn't exists").exists(),
+                body('tags', "tags doesn't exists").exists(),
+                body('number', "number doesn't exists").exists(),
+                body('email', "email doesn't exists").exists(),
+                body('city', "city doesn't exists").exists(),
             ]
         }
     }
@@ -24,7 +33,7 @@ module.exports.index = async (req, res) => {
 }
 
 module.exports.create = async (req, res) => {
-    if (!ObjectId.isValid(req.body.user))
+    if (!ObjectId.isValid(req.body.user._id))
         return res.status(400).send({ msg: "Unknown ID" });
     const errors = validationResult(req)
     if (!errors.isEmpty()){

@@ -8,6 +8,7 @@ import { getUser} from "./actions/user.action"
 import RouterComp from "./routers/index"
 import { GetFaqs } from "./actions/faqs.actions";
 import { GetCities } from "./actions/cities.actions";
+import { GetRestaurants } from "./actions/restaurant.action";
 
 function App() {
   const [uid, setuid] = useState(null)
@@ -26,6 +27,7 @@ function App() {
     fetchToken()
     dispatch(GetFaqs())
     dispatch(GetCities())
+    dispatch(GetRestaurants())
     // update the data in our store
     if (uid)
       dispatch(getUser(uid))

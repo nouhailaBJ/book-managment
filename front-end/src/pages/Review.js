@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Stars from "../components/Restaurants/Stars";
 import "../styles/Review.scss";
-function ReviewBook() {
-  const params = useParams();
-  const bookId = params.BookId;
+import { useDispatch, useSelector } from 'react-redux';
+import { findRestaurantById } from "../actions/restaurant.action";
 
+function Review() {
+  const params = useParams();
+  const restaurantId = params.id;
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(findRestaurantById(restaurantId))
+  })
   return (
+    
     <section className="section-padding gray ">
       <div className="container">
         <div className="row">
@@ -188,4 +196,4 @@ function ReviewBook() {
   );
 }
 
-export default ReviewBook;
+export default Review;

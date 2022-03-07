@@ -11,8 +11,9 @@ import Profile from "../pages/Profile";
 import Review from "../pages/Review";
 import { Route, Routes } from "react-router-dom";
 import RequireAuth from "../middleware/RequireAuth";
+import { useSelector } from "react-redux";
 
-function index() {
+function Index() {
   return (
     <>
       <Routes>
@@ -21,7 +22,7 @@ function index() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/connection" element={<Connection />} />
-        <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/restaurants" element={<Restaurants title={"Restaurants"}/>} />
         <Route
           path="/profile"
           element={
@@ -39,4 +40,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;

@@ -7,11 +7,12 @@ import { useSelector } from 'react-redux'
 
 function Home() {
   const cities = useSelector((state) => state.cityReducer)
+  const restaurants = useSelector((state) => state.restaurantReducer)
   return (
     <>
         <Slider />
         <Categories cities={cities}/>
-        <Restaurants />
+        <Restaurants restaurants={restaurants}/>
     </>
   )
 }
