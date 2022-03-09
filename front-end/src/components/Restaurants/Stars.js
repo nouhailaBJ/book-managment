@@ -1,6 +1,10 @@
 import React from 'react'
 
-function Stars() {
+function Stars({reviews}) {
+  // let stars = 0
+  // for (let i = 0; i < reviews.length; i++){
+  //   stars += reviews[i].stars
+  // }
   return (
     <div className="pro-rating text-center">
         <a href="#">

@@ -44,7 +44,7 @@ function NavHeader() {
                             title={"By City"}
                             >
                             {
-                                cities.map((city, index) => <Link to="/about" key={index}>{city.name}</Link>)
+                                cities.map((city, index) => <Link to={`/category/${city._id}`} key={index}>{city.name}</Link>)
                             }
                             </NavDropdown>
                         </li>

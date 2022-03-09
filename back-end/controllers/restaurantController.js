@@ -1,5 +1,7 @@
 const RestaurantModel = require('../models/restaurant.model')
 const UserModel = require('../models/user.model')
+const ReviewModel = require('../models/reviews.model')
+
 const { body, validationResult } = require('express-validator')
 const ObjectId = require("mongoose").Types.ObjectId;
 
@@ -32,22 +34,19 @@ module.exports.index = async (req, res) => {
     }
 }
 module.exports.create = async (req, res) => {
-    if (!ObjectId.isValid(req.body.user._id))
+    if (!ObjectId.isValid(req.body.user))
         return res.status(400).send({ msg: "Unknown ID" });
     const errors = validationResult(req)
-    try{
-        if(req.file.mimetype !== "image/jpg" &&
-        req.file.mimetype !== "image/png" &&
-        req.file.mimetype !== "image/jpeg")
+    if(req.file.mimetype !== "image/jpg" &&
+    req.file.mimetype !== "image/png" &&
+    req.file.mimetype !== "image/jpeg")
         errors.push("Invalid format of the image")
-    }catch(err){
-        return res.status(404).json({err})
-    }
+    console.log(errors)
     if (!errors.isEmpty()){
-        res.status(400).json({errors: errors.array() })
+        res.status(400).json({errors: errors.array()})
         return ;
     }
-    const image = req.file != null ? req.file.filename : null
+    const image = req.file != null ? "/uploads/restaurant/" + req.file.filename : null
     try{
         const restaurant = await RestaurantModel.create({...req.body, image})
         const user = await UserModel.findById({_id: restaurant.user})
@@ -57,4 +56,32 @@ module.exports.create = async (req, res) => {
     }catch(err) {
         res.status(400).json({err})
     }
+}
+
+module.exports.getRestaurantById = async (req, res) => {
+    try {
+        const restaurant = await RestaurantModel.findOne({ _id: req.params.id }).populate('city').populate('reviews')
+        console.log(restaurant)
+        res.status(200).json(restaurant);
+      } catch (error) {
+        res.status(404).json({ message: error.message });
+      }
+}
+
+module.exports.createReview = async (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send("ID unknown : " + req.params.id);
+        try {
+            const review = await ReviewModel.create(req.body)
+            await RestaurantModel.findByIdAndUpdate(
+              req.params.id,
+              {
+                $push: { reviews:review._id },
+              },
+              { new: true }
+            );
+            res.status(200).json(review);
+          } catch (error) {
+            res.status(404).json({ message: error.message });
+          }
 }

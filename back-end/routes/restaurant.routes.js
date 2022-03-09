@@ -23,5 +23,8 @@ router.get('/', restaurantController.index)
 router.post('/create', [ upload.single('image'), restaurantController.validate('create')], restaurantController.create)
 
 router.post('/upload', upload.single('image'),  uploadController.uploadImageRestaurant)
+router.get('/:id', restaurantController.getRestaurantById)
+
+router.post('/review/:id', restaurantController.createReview)
 
 module.exports = router

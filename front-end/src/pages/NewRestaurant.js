@@ -7,47 +7,53 @@ import { ToastContainer, toast } from 'react-toastify';
 import { createRestaurant } from "../actions/restaurant.action";
 
 function NewRestaurant() {
-   const cities = useSelector((state) => state.cityReducer)
-   const user = useSelector((state) => state.userReducer)
-   const [file, setFile] = useState();
-  const [restaurant, setRestaurant] = useState({user});
+  const cities = useSelector((state) => state.cityReducer)
+  const user = useSelector((state) => state.userReducer)
+  const [file, setFile] = useState();
   const dispatch = useDispatch()
-  const handleInput = (e) => {
-    const { name, value } = e.target;
-    setRestaurant({ ...restaurant, [name]: value });
+  const [formData, updateFormData] = React.useState({});
+  const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+      [e.target.name]: e.target.value.trim()
+    });
   };
   const HandleSubmit = (e) => {
-   e.preventDefault()
-   const data = new FormData()
-   data.append("image", file)
-   //add the data here
-   dispatch(createRestaurant(data))
-}
+    e.preventDefault()
+    let data = new FormData();
+    data.append("image", file);
+    data.append("user", user._id)
+    for (let name in formData){
+      data.append(name, formData[name]);
+    }
+    dispatch(createRestaurant(data))
+    document.getElementById("myForm").reset();
+  }
   return (
     <section className="section-padding gray ">
-      <div className="container">
+      <div className="container" id="create-form">
         <Title
           title="Add new Restaurant"
           desc="Add new Restaurant and help others to find interesting One"
         />
         <div className="post-ad-form postdetails">
-          <div className="submit-form">
+          <form className="submit-form" id="myForm" onSubmit={HandleSubmit}>
             <div className="row">
               <div className="col-md-12 col-lg-12 col-xs-12 col-sm-12">
-              s  <label className="control-label">Restaurant Title</label>
+               <label className="control-label">Restaurant Title</label>
                 <input
                   className="form-control"
                   placeholder="Title"
                   type="text"
                   name="title"
-                  onChange={handleInput}
+                  onChange={handleChange}
                 />
               </div>
             </div>
             <div className="row">
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                 <label className="control-label">Select City</label>
-                <select className=" form-control make" onChange={handleInput} name="city">
+                <select className=" form-control make" onChange={handleChange} name="city">
                   <option label="Any City !"></option>
                   {cities.map((city, index) => <option key={index} value={city._id}>{city.name}</option>)}
                 </select>
@@ -61,14 +67,14 @@ function NewRestaurant() {
                   placeholder="Rue mouhamdia, rce Bdr Bloc N , Marrakech"
                   type="text"
                   name="location"
-                  onChange={handleInput}
+                  onChange={handleChange}
                 />
               </div>
             </div>
             <div className="row">
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
                 <label className="control-label">Select Restaurant Type</label>
-                <select className=" form-control make" onChange={handleInput} name="type">
+                <select className=" form-control make" onChange={handleChange} name="type">
                   <option label="Any Type"></option>
                   <option value="Restaurants">Restaurants</option>
                   <option value="Coffee & Tea">Coffee & Tea</option>
@@ -84,7 +90,7 @@ function NewRestaurant() {
                   placeholder="$350 - 3234$"
                   type="text"
                   name="price_range"
-                  onChange={handleInput}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -98,7 +104,7 @@ function NewRestaurant() {
                   placeholder="11AM - 11PM"
                   type="text"
                   name="date_works"
-                  onChange={handleInput}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
@@ -110,7 +116,7 @@ function NewRestaurant() {
                   placeholder="buff - couscous - rfissa ..."
                   type="text"
                   name="special_plats"
-                  onChange={handleInput}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -120,7 +126,7 @@ function NewRestaurant() {
                   Photo for your Restaurant{" "}
                   <small>Please add image of your Restaurant. (350x450)</small>
                 </label>
-                <input className="form-control" type="file" name="image" accept=".jpg, .jpeg, .png" onChange={(e) => setFile(e.target.files[0])}/>
+                <input className="form-control" type="file" accept=".jpg, .jpeg, .png" onChange={(e) => setFile(e.target.files[0])}/>
               </div>
             </div>
             <div className="row">
@@ -131,7 +137,7 @@ function NewRestaurant() {
                   rows="12"
                   className="form-control"
                   placeholder="Description"
-                  onChange={handleInput}
+                  onChange={handleChange}
                   name="desc" 
                 ></textarea>
               </div>
@@ -145,7 +151,7 @@ function NewRestaurant() {
                   id="tags"
                   name="tags" 
                   placeholder="Amazing bar, good Pintxos, nice service ...."
-                  onChange={handleInput}
+                  onChange={handleChange}
                 />
               </div>
             </div>
@@ -159,7 +165,7 @@ function NewRestaurant() {
                   placeholder="0606060606"
                   type="text"
                   name="number"
-                  onChange={handleInput}
+                  onChange={handleChange}
                 />
               </div>
               <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
@@ -171,15 +177,15 @@ function NewRestaurant() {
                   placeholder="email@email.com"
                   type="email"
                   name="email"
-                  onChange={handleInput}
+                  onChange={handleChange}
                 />
               </div>
             </div>
-            <button className="btn btn-theme pull-right" onClick={HandleSubmit}>
+            <button className="btn btn-theme pull-right" type="submit">
               Publish My Restaurant
             </button>
             <ToastContainer />
-          </div>
+          </form>
         </div>
       </div>
     </section>

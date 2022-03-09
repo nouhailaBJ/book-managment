@@ -3188,8 +3188,10 @@ div.boxicon:last-child {
 }
 
 .recent-ads .recent-ads-container {
-	display: table;
-	width: 100%;
+	display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 .recent-ads .recent-ads-list-image {
@@ -3202,10 +3204,10 @@ div.boxicon:last-child {
 	position: relative;
 	width: 100%;
 	z-index: 2;
+	width:80px;
 }
 
 .recent-ads .recent-ads-list-image-inner {
-	background-color: rgba(0, 0, 0, 0.12);
 	display: block;
 	height: 60px;
 	margin: 0 16px 0 0;

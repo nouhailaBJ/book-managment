@@ -24,7 +24,7 @@ function Restaurant({restaurant}) {
             {restaurant.title}
           </Link>
           </h3>
-          <Stars />
+          <Stars reviews={restaurant.reviews}/>
         </div>
       </div>
     </div>
